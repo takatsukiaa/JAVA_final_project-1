@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>縮網址服務</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .result {
+        margin-top: 20px;
+        display: none;
+      }
+
+      .result input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>縮網址服務</h1>
+      <p>輸入一個網址，幫你生成一個短網址。</p>
+      <input type="text" id="urlInput" placeholder="請輸入網址" />
+      <button onclick="shortenUrl()">縮短網址</button>
+      <div class="result" id="result">
+        <p>縮短後的網址：</p>
+        <input type="text" id="shortUrl" readonly />
+      </div>
+    </div>
+
+    <script>
+      function shortenUrl() {
+        const urlInput = document.getElementById("urlInput").value;
+        const result = document.getElementById("result");
+        const shortUrl = document.getElementById("shortUrl");
+
+        if (urlInput) {
+          // 這裡應該連接到後端服務進行實際的縮網址
+          const simulatedShortUrl =
+            "https://short.url/" + btoa(urlInput).substring(0, 8);
+
+          shortUrl.value = simulatedShortUrl;
+          result.style.display = "block";
+        } else {
+          alert("請輸入有效的網址");
+        }
+      }
+    </script>
+  </body>
+</html>
